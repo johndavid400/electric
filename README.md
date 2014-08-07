@@ -1,10 +1,19 @@
 ## Ruby Library for electronics
 
+### Setup
+
+    gem install electric
+
+    irb
+
+    require 'electric'
+
 ### Resistor Color Code Calculator
 
 Accepts 4 arguments (first 3 bands determine resistor value, 4th band is for tolerance %), though none are required to return a value of 0 ohms. You must preserve order of bands as arguments.
 
     resistor = Electric::Resistor.new("red", "black", "brown")
+
     resistor.value
     => 200
     resistor.tolerance
@@ -19,6 +28,7 @@ Accepts 4 named arguments: "volts", "ohms", "amps", and "watts" in any order. Yo
 There are 4 methods that can be called to run calculations: "resistance", "power", "voltage", and "current"
 
     ohm = Electric::Ohm.new(:volts => 5, :ohms => 330)
+
     ohm.voltage
     => 5.0
     ohm.resistance
