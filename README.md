@@ -1,5 +1,13 @@
 ## Ruby Library for electronics
 
+### Resistor Color Code Calculator
+Electric::Resistor.new("red", "black", "brown").human_readable
+
+### Ohm's Law Calculator
+Electric::Ohm.new(:volts => 5, :ohms => 330).current
+
+
+
 More documentation on the way...
 
 ## Bug reports and Pull requests
