@@ -11,19 +11,23 @@ module Electric
 
     def human_readable
       if value >= 1000000
-        "#{round_for(value / 1000000.0)}M ohms#{color_to_tolerance(@fourth)}"
+        "#{round_for(value / 1000000.0)}M ohms, +/- #{color_to_tolerance(@fourth)}"
       elsif value >= 1000
-        "#{round_for(value / 1000.0)}K ohms#{color_to_tolerance(@fourth)}"
+        "#{round_for(value / 1000.0)}K ohms, +/- #{color_to_tolerance(@fourth)}"
       else
-        "#{value} ohms#{color_to_tolerance(@fourth)}"
+        "#{value} ohms, +/- #{color_to_tolerance(@fourth)}"
       end
     end
-
-    private
 
     def value
       "#{color_to_number(first)}#{color_to_number(second)}".to_i * color_to_multiplier(third)
     end
+
+    def tolerance
+      color_to_tolerance(@fourth)
+    end
+
+    private
 
     def color_to_number(color)
       colors = {
@@ -61,8 +65,8 @@ module Electric
 
     def color_to_tolerance(color)
       colors = {
-        "gold" => ", +/- 5%",
-        "silver" => ", +/- 10%"
+        "gold" => "5%",
+        "silver" => "10%"
       }
       colors[color.downcase]
     end
