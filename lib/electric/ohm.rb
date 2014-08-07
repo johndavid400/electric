@@ -48,8 +48,8 @@ module Electric
         # I * R
         amps * ohms
       elsif watts && amps
-        # P / I^2
-        watts / (amps * amps)
+        # P / I
+        watts / amps
       elsif ohms && watts
         # sq_root(P * R)
         sqrt(watts * ohms)
