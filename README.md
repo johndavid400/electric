@@ -4,13 +4,13 @@
 
 Accepts 4 arguments (first 3 bands determine resistor value, 4th band is for tolerance %), though none are required to return a value of 0 ohms. You must preserve order of bands as arguments.
 
-resistor = Electric::Resistor.new("red", "black", "brown")
-resistor.value
-=> 200
-resistor.tolerance
-=> "5%"
-resistor.human_readable
-=> "200 ohms, +/- 5%"
+    resistor = Electric::Resistor.new("red", "black", "brown")
+    resistor.value
+    => 200
+    resistor.tolerance
+    => "5%"
+    resistor.human_readable
+    => "200 ohms, +/- 5%"
 
 ### Ohm's Law Calculator
 
@@ -18,14 +18,14 @@ Accepts 4 named arguments: "volts", "ohms", "amps", and "watts" in any order. Yo
 
 There are 4 methods that can be called to run calculations: "resistance", "power", "voltage", and "current"
 
-Electric::Ohm.new(:volts => 5, :ohms => 330).voltage
-=> 5.0
-Electric::Ohm.new(:volts => 5, :ohms => 330).resistance
-=> 330.0
-Electric::Ohm.new(:volts => 5, :ohms => 330).current
-=> 0.015151515151515152
-Electric::Ohm.new(:volts => 5, :ohms => 330).power
-=> 0.07575757575757576
+    Electric::Ohm.new(:volts => 5, :ohms => 330).voltage
+    => 5.0
+    Electric::Ohm.new(:volts => 5, :ohms => 330).resistance
+    => 330.0
+    Electric::Ohm.new(:volts => 5, :ohms => 330).current
+    => 0.015151515151515152
+    Electric::Ohm.new(:volts => 5, :ohms => 330).power
+    => 0.07575757575757576
 
 
 More documentation on the way...
