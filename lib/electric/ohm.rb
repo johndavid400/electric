@@ -1,5 +1,6 @@
 module Electric
   class Ohm
+
     attr_accessor :ohms, :volts, :amps, :watts
 
     def initialize(options={})
@@ -10,6 +11,24 @@ module Electric
     end
 
     def resistance
+      ohms ? ohms : get_resistance
+    end
+
+    def voltage
+      volts ? volts : get_voltage
+    end
+
+    def current
+      amps ? amps : get_current
+    end
+
+    def power
+      watts ? watts : get_power
+    end
+
+    private
+
+    def get_resistance
       if watts && amps
         # P / I^2
         watts / (amps * amps)
@@ -24,7 +43,7 @@ module Electric
       end
     end
 
-    def voltage
+    def get_voltage
       if ohms && amps
         # I * R
         amps * ohms
@@ -39,7 +58,7 @@ module Electric
       end
     end
 
-    def current
+    def get_current
       if watts && volts
         # P / V
         watts / volts
@@ -54,7 +73,7 @@ module Electric
       end
     end
 
-    def power
+    def get_power
       if volts && amps
         # V * I
         volts * amps
