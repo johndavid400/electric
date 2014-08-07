@@ -18,13 +18,14 @@ Accepts 4 named arguments: "volts", "ohms", "amps", and "watts" in any order. Yo
 
 There are 4 methods that can be called to run calculations: "resistance", "power", "voltage", and "current"
 
-    Electric::Ohm.new(:volts => 5, :ohms => 330).voltage
+    ohm = Electric::Ohm.new(:volts => 5, :ohms => 330)
+    ohm.voltage
     => 5.0
-    Electric::Ohm.new(:volts => 5, :ohms => 330).resistance
+    ohm.resistance
     => 330.0
-    Electric::Ohm.new(:volts => 5, :ohms => 330).current
+    ohm.current
     => 0.015151515151515152
-    Electric::Ohm.new(:volts => 5, :ohms => 330).power
+    ohm.power
     => 0.07575757575757576
 
 
