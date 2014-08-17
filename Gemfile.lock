@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    electric (0.0.1)
+    electric (0.0.5)
 
 GEM
   remote: http://rubygems.org/

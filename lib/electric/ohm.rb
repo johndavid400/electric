@@ -4,10 +4,15 @@ module Electric
     attr_accessor :ohms, :volts, :amps, :watts
 
     def initialize(options={})
-      @ohms = options[:ohms].to_f if options[:ohms]
-      @volts = options[:volts].to_f if options[:volts]
-      @amps = options[:amps].to_f if options[:amps]
-      @watts = options[:watts].to_f if options[:watts]
+      ohms = options["ohms"] || options[:ohms] || options["resistance"] || options[:resistance]
+      @ohms = ohms.to_f if ohms.present?
+      volts = options["volts"] || options[:volts] || options["voltage"] || options[:voltage]
+      @volts = volts.to_f if volts.present?
+      amps = options["amps"] || options[:amps] || options["current"] || options[:current] || options["amperage"] || options[:amperage]
+      @amps = amps.to_f if amps.present?
+      watts = options["watts"] || options[:watts] || options["power"] || options[:power]
+      @watts = watts.to_f if watts.present?
+      calculate
     end
 
     def resistance
@@ -24,6 +29,13 @@ module Electric
 
     def power
       watts ? watts : get_power
+    end
+
+    def calculate
+      @ohms = get_resistance unless @ohms
+      @volts = get_voltage unless @volts
+      @amps = get_current unless @amps
+      @watts = get_power unless @watts
     end
 
     private
@@ -52,7 +64,7 @@ module Electric
         watts / amps
       elsif ohms && watts
         # sq_root(P * R)
-        sqrt(watts * ohms)
+        Math.sqrt(watts * ohms)
       else
         volts if volts
       end
@@ -67,7 +79,7 @@ module Electric
         volts / ohms
       elsif watts && ohms
         # sq_root(P) / R
-        sqrt(watts) / ohms
+        Math.sqrt(watts) / ohms
       else
         amps if amps
       end
